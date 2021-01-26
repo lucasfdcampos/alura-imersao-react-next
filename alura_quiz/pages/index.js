@@ -26,7 +26,7 @@ export const QuizContainer = styled.div`
 
 export default function Home() {
   return (
-    <QuizBackground>
+    <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
         <QuizLogo />
 
@@ -47,10 +47,10 @@ export default function Home() {
             <p>Teste paragrafo</p>
           </Widget.Content>
         </Widget>
+        <Footer />
       </QuizContainer>
 
-      <GitHubCorner />
-      <Footer />
+      <GitHubCorner projectUrl="https://github.com/lucasfdcampos/alura-imersao-react-next" />
     </QuizBackground>
   );
 }

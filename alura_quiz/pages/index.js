@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 import db from '../db.json';
+import Widget from '../src/components/Widget';
+import QuizBackground from '../src/components/QuizBackground';
+import Footer from '../src/components/Footer';
+import GitHubCorner from '../src/components/GitHubCorner';
+import QuizLogo from '../src/components/QuizLogo';
 
 const BackgroundImage = styled.div`
   background-image: url(${db.bg});
@@ -21,9 +26,31 @@ export const QuizContainer = styled.div`
 
 export default function Home() {
   return (
-    <BackgroundImage>
+    <QuizBackground>
       <QuizContainer>
-        Teste do Lucas
+        <QuizLogo />
+
+        <Widget>
+          <Widget.Header>
+            <h1>Titulo</h1>
+          </Widget.Header>
+          <Widget.Content>
+            <p>Teste paragrafo</p>
+          </Widget.Content>
+        </Widget>
+
+        <Widget>
+          <Widget.Header>
+            <h1>Titulo</h1>
+          </Widget.Header>
+          <Widget.Content>
+            <p>Teste paragrafo</p>
+          </Widget.Content>
+        </Widget>
       </QuizContainer>
-    </BackgroundImage>);
+
+      <GitHubCorner />
+      <Footer />
+    </QuizBackground>
+  );
 }

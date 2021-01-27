@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import styled from 'styled-components';
 
 const ButtonWrapper = styled.button`
-  outline: none;
+  outline: 0;
   background-color: ${({ theme }) => theme.colors.secondary};
   border: none;
   padding: 1rem;
@@ -22,6 +24,7 @@ const ButtonWrapper = styled.button`
 
 export default function Button(props) {
   return (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <ButtonWrapper {...props}>
       <span>{props.texto}</span>
     </ButtonWrapper>

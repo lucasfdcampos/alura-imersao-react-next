@@ -9,6 +9,7 @@ import QuizBackground from '../src/components/QuizBackground';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 import QuizLogo from '../src/components/QuizLogo';
+import Input from '../src/components/Input';
 import Button from '../src/components/Button';
 
 export const QuizContainer = styled.div`
@@ -46,7 +47,7 @@ export default function Home() {
                 router.push(`/quiz?name=${name}`);
               }}
             >
-              <input
+              <Input
                 type="text"
                 name="name"
                 onChange={function alterarNome(e) {

@@ -33,6 +33,7 @@
     "colors": {
       "primary": "#512da8",
       "secondary": "#a44fbb",
+      "secondaryDark": "#672c77",
       "mainBg": "#171B35",
       "mainWidget": "#232429",
       "contrastText": "#FFFFFF",

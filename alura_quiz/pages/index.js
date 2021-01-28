@@ -50,9 +50,7 @@ export default function Home() {
               <Input
                 type="text"
                 name="name"
-                onChange={function alterarNome(e) {
-                  setName(e.target.value);
-                }}
+                onChange={(alterarNome) => setName(alterarNome.target.value)}
                 placeholder="Digite seu nome"
               />
 

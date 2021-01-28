@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const InputBase = styled.input`
@@ -13,9 +14,17 @@ const InputBase = styled.input`
   margin-bottom: 25px;
 `;
 
+// eslint-disable-next-line react/prop-types
 export default function Input(props) {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <InputBase {...props} />
   );
 }
+
+Input.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+};

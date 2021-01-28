@@ -13,6 +13,13 @@ const SVGWrapper = styled.svg`
   fill: ${({ theme }) => theme.colors.secondary};
   color: ${({ theme }) => theme.colors.contrastText};
   cursor: pointer;
+  transition: 0.3s;
+
+  &:hover,
+  &:focus {
+    fill: ${({ theme }) => theme.colors.secondaryDark};
+  }
+
   &:hover .octo-arm {
     animation: octocat-wave 560ms ease-in-out;
   }

@@ -1,14 +1,22 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ButtonWrapper = styled.button`
-  outline: 0;
   background-color: ${({ theme }) => theme.colors.secondary};
-  border: none;
-  padding: 1rem;
+  color: ${({ theme }) => theme.contrastText};
   border-radius: ${({ theme }) => theme.borderRadius};
+  border: 0;
+
+  width: 100%;
+  padding: 10px 16px;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1;
+  text-transform: uppercase;
+  outline: 0;
   transition: 0.3s;
   cursor: pointer;
 
@@ -30,3 +38,7 @@ export default function Button(props) {
     </ButtonWrapper>
   );
 }
+
+Button.propTypes = {
+  type: PropTypes.oneOf(['submit', 'type', 'button']).isRequired,
+};

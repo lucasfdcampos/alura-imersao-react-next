@@ -38,7 +38,7 @@ export default function Home() {
 
         <Widget>
           <Widget.Header>
-            <h1>Quiz CSS</h1>
+            <h1>#JavaScriptQuiz</h1>
           </Widget.Header>
           <Widget.Content>
             <form
@@ -52,6 +52,7 @@ export default function Home() {
                 name="name"
                 onChange={(alterarNome) => setName(alterarNome.target.value)}
                 placeholder="Digite seu nome"
+                value={name}
               />
 
               <Button

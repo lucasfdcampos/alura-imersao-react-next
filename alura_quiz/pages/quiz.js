@@ -48,7 +48,11 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit }) {
           {question.alternatives.map((alternative, alternativeIndex) => {
             const alternativeId = `alternative__${alternativeIndex}`;
             return (
-              <Widget.Topic as="label" htmlFor={alternativeId}>
+              <Widget.Topic
+                as="label"
+                htmlFor={alternativeId}
+                key={alternativeId}
+              >
                 <input
                   // style={{ display: 'none' }}
                   id={alternativeId}

@@ -52,20 +52,6 @@ export default function Home() {
             </form>
           </Widget.Content>
         </Widget>
-
-        <Widget>
-          <Widget.Header>
-            <h1>Titulo</h1>
-          </Widget.Header>
-          <Widget.Content>
-            <p>Teste paragrafo</p>
-            <ul>
-              <li>Item 1</li>
-              <li>Item 2</li>
-              <li>Item 3</li>
-            </ul>
-          </Widget.Content>
-        </Widget>
         <Footer />
       </QuizContainer>
 

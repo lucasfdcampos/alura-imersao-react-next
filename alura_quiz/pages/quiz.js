@@ -17,6 +17,16 @@ function LoadingWidget() {
   );
 }
 
+function CongratulationsWidget() {
+  return (
+    <Widget>
+      <Widget.Header>Parabéns!</Widget.Header>
+
+      <Widget.Content>Você acertou X questões.</Widget.Content>
+    </Widget>
+  );
+}
+
 function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit }) {
   const questionId = `question__${questionIndex}`;
   return (
@@ -122,9 +132,7 @@ export default function QuizPage() {
 
         {screenState === screenStates.LOADING && <LoadingWidget />}
 
-        {screenState === screenStates.RESULT && (
-          <div>Você acertou X questões, parabéns!</div>
-        )}
+        {screenState === screenStates.RESULT && <CongratulationsWidget />}
       </QuizContainer>
     </QuizBackground>
   );

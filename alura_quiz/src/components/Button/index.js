@@ -2,10 +2,10 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const ButtonWrapper = styled.button`
-  background-color: ${({ theme }) => theme.colors.secondary};
+  
   color: ${({ theme }) => theme.contrastText};
   border-radius: ${({ theme }) => theme.borderRadius};
   border: 0;
@@ -18,13 +18,25 @@ const ButtonWrapper = styled.button`
   text-transform: uppercase;
   outline: 0;
   transition: 0.3s;
-  cursor: pointer;
 
   &:hover,
   &:focus {
     background-color: ${({ theme }) => theme.colors.secondaryDark};
   }
-
+  
+  ${(props) => (props.disabled
+    ? css`
+          background-color: ${({ theme }) => theme.colors.disabled};
+          cursor: not-allowed;
+          :hover {
+            background-color: ${({ theme }) => theme.colors.disabled};
+          }
+        `
+    : css`
+          background-color: ${({ theme }) => theme.colors.secondary};
+          cursor: pointer;
+        `)};
+  
   span {
     color: ${({ theme }) => theme.colors.contrastText};
   }

@@ -21,7 +21,10 @@ function LoadingWidget() {
 function ResultWidget({ results }) {
   return (
     <Widget>
-      <Widget.Header>Parabéns!</Widget.Header>
+      <Widget.Header>
+        {results.filter((x) => x).length > 0
+          ? 'Parabéns!' : 'Que pena...'}
+      </Widget.Header>
 
       <Widget.Content>
         <p>

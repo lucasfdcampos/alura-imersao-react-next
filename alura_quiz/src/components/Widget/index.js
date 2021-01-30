@@ -66,4 +66,23 @@ Widget.Topic = styled.a`
   }
 `;
 
+Widget.Answer = styled.div`
+  background-color: ${(props) => (props.answer === 'success'
+    ? ({ theme }) => theme.colors.success
+    : ({ theme }) => theme.colors.wrong)};
+  color: ${({ theme }) => theme.contrastText};
+  border-radius: ${({ theme }) => theme.borderRadius};
+  border: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px;
+  margin-top: 16px;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1;
+`;
+
 export default Widget;

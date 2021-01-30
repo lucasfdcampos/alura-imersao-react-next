@@ -28,7 +28,14 @@ function CongratulationsWidget() {
 }
 
 function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit }) {
+  const [selectedAlternative, setSelectedAlternative] = React.useState(
+    undefined
+  );
+  const [isQuestionSubmited, setIsQuestionSubmited] = React.useState(false);
   const questionId = `question__${questionIndex}`;
+  const isCorrect = selectedAlternative === question.answer;
+  const hasAlternativeSelected = selectedAlternative !== undefined;
+
   return (
     <Widget>
       <Widget.Header>
@@ -52,7 +59,12 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit }) {
         <form
           onSubmit={(infosDoEvento) => {
             infosDoEvento.preventDefault();
-            onSubmit();
+            setIsQuestionSubmited(true);
+            setTimeout(() => {
+              onSubmit();
+              setIsQuestionSubmited(false);
+              setSelectedAlternative(undefined);
+            }, 3 * 1000);
           }}
         >
           {question.alternatives.map((alternative, alternativeIndex) => {
@@ -67,6 +79,7 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit }) {
                   // style={{ display: 'none' }}
                   id={alternativeId}
                   name={questionId}
+                  onChange={() => setSelectedAlternative(alternativeIndex)}
                   type="radio"
                 />
                 {alternative}
@@ -77,7 +90,19 @@ function QuestionWidget({ question, questionIndex, totalQuestions, onSubmit }) {
           {/* <pre>
             {JSON.stringify(question, null, 4)}
           </pre> */}
-          <Button type="submit" texto="Confirmar" />
+          <Button
+            type="submit"
+            disabled={!hasAlternativeSelected}
+            texto="Confirmar"
+          />
+
+          {isQuestionSubmited && isCorrect && (
+            <Widget.Answer answer="success">Você acertou!</Widget.Answer>
+          )}
+
+          {isQuestionSubmited && !isCorrect && (
+            <Widget.Answer answer="wrong">Você errou!</Widget.Answer>
+          )}
         </form>
       </Widget.Content>
     </Widget>

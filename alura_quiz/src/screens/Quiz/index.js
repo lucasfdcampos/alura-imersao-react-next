@@ -8,6 +8,7 @@ import QuizBackground from '../../components/QuizBackground';
 import QuizContainer from '../../components/QuizContainer';
 import AlterativesForm from '../../components/AlternativesForm';
 import Button from '../../components/Button';
+import BackLinkArrow from '../../components/BackLinkArrow';
 
 function LoadingWidget() {
   return (
@@ -30,8 +31,7 @@ function ResultWidget({ results, player }) {
 
       <Widget.Content>
         <p>
-          Você acertou
-          {' '}
+          Você acertou{' '}
           {/* {results.reduce((somatoriaAtual, resultAtual) => {
             const isAcerto = resultAtual === true;
             if (isAcerto) {
@@ -39,15 +39,13 @@ function ResultWidget({ results, player }) {
             }
             return somatoriaAtual;
           }, 0)} */}
-          {results.filter((x) => x).length}
-          {' '}
+          {results.filter((x) => x).length}{' '}
           {results.filter((x) => x).length < 2 ? 'questão' : 'questões'}
         </p>
         <ul>
           {results.map((result, index) => (
             <li key={`result__${result}`}>
-              #
-              {index + 1}
+              #{index + 1}
               Resultado:
               {result === true ? 'Acertou' : 'Errou'}
             </li>
@@ -76,7 +74,7 @@ function QuestionWidget({
   return (
     <Widget>
       <Widget.Header>
-        {/* <BackLinkArrow href="/" /> */}
+        <BackLinkArrow href="/" />
         <h3>{`Pergunta ${questionIndex + 1} de ${totalQuestions}`}</h3>
       </Widget.Header>
 

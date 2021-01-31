@@ -51,6 +51,19 @@ export default function Home() {
             </form>
           </Widget.Content>
         </Widget>
+
+        <Widget>
+          <Widget.Content>
+            <h1>Quizes da Galera</h1>
+            <ul>
+              {db.external.map((linkExterno) => (
+                <li key={linkExterno}>
+                  <a href={linkExterno}>{linkExterno}</a>
+                </li>
+              ))}
+            </ul>
+          </Widget.Content>
+        </Widget>
         <Footer />
       </QuizContainer>
 

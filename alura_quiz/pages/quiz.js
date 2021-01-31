@@ -40,7 +40,7 @@ function ResultWidget({ results, player }) {
           }, 0)} */}
           {results.filter((x) => x).length}
           {' '}
-          questões.
+          {results.filter((x) => x).length < 2 ? 'questão' : 'questões'}
         </p>
         <ul>
           {results.map((result, index) => (

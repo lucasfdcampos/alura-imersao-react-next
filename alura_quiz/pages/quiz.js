@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useRouter } from 'next/router';
 import db from '../db.json';
 import Widget from '../src/components/Widget';
 import QuizLogo from '../src/components/QuizLogo';
@@ -18,12 +19,12 @@ function LoadingWidget() {
   );
 }
 
-function ResultWidget({ results }) {
+function ResultWidget({ results, player }) {
   return (
     <Widget>
       <Widget.Header>
         {results.filter((x) => x).length > 0
-          ? 'Parabéns!' : 'Que pena...'}
+          ? `Parabéns ${player}!` : `Que pena ${player}...`}
       </Widget.Header>
 
       <Widget.Content>
@@ -163,6 +164,9 @@ export default function QuizPage() {
   const questionIndex = currentQuestion;
   const question = db.questions[questionIndex];
 
+  const router = useRouter();
+  const namePlayer = router.query;
+
   function addResult(result) {
     setResults([...results, result]);
   }
@@ -205,7 +209,7 @@ export default function QuizPage() {
         {screenState === screenStates.LOADING && <LoadingWidget />}
 
         {screenState === screenStates.RESULT && (
-          <ResultWidget results={results} />
+          <ResultWidget results={results} player={namePlayer.name} />
         )}
       </QuizContainer>
     </QuizBackground>

@@ -2,11 +2,15 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import QuizScreen from '../../src/screens/Quiz';
 
+// eslint-disable-next-line react/prop-types
 export default function QuizDaGaleraPage({ dbExterno }) {
   return (
+    // eslint-disable-next-line react/prop-types
     <ThemeProvider theme={dbExterno.theme}>
       <QuizScreen
+        // eslint-disable-next-line react/prop-types
         externalQuestions={dbExterno.questions}
+        // eslint-disable-next-line react/prop-types
         externalBg={dbExterno.bg}
       />
     </ThemeProvider>

@@ -31,7 +31,8 @@ function ResultWidget({ results, player }) {
 
       <Widget.Content>
         <p>
-          Você acertou{' '}
+          Você acertou
+          {' '}
           {/* {results.reduce((somatoriaAtual, resultAtual) => {
             const isAcerto = resultAtual === true;
             if (isAcerto) {
@@ -39,13 +40,15 @@ function ResultWidget({ results, player }) {
             }
             return somatoriaAtual;
           }, 0)} */}
-          {results.filter((x) => x).length}{' '}
+          {results.filter((x) => x).length}
+          {' '}
           {results.filter((x) => x).length < 2 ? 'questão' : 'questões'}
         </p>
         <ul>
           {results.map((result, index) => (
             <li key={`result__${result}`}>
-              #{index + 1}
+              #
+              {index + 1}
               Resultado:
               {result === true ? 'Acertou' : 'Errou'}
             </li>
@@ -64,7 +67,7 @@ function QuestionWidget({
   addResult,
 }) {
   const [selectedAlternative, setSelectedAlternative] = React.useState(
-    undefined
+    undefined,
   );
   const [isQuestionSubmited, setIsQuestionSubmited] = React.useState(false);
   const questionId = `question__${questionIndex}`;

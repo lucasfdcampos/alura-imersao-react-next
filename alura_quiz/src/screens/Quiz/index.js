@@ -63,6 +63,7 @@ function ResultWidget({ results, player }) {
               #
               {index + 1}
               Resultado:
+              {' '}
               {result === true ? 'Acertou' : 'Errou'}
             </li>
           ))}

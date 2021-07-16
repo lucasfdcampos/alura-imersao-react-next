@@ -292,7 +292,7 @@ export function OrkutNostalgicIconSet(props) {
               style={{ gridArea: 'number' }}
             >
               {[0, 1, 2].map((_, index) => {
-                const isHeartActive = index <= total - 1;
+                const isHeartActive = index <= total;
                 return (
                   <img
                     key={`orkut__icon_set__${slug}_img_${index}`}

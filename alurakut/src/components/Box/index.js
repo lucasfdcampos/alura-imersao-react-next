@@ -43,13 +43,13 @@ const Box = styled.div`
   input {
     width: 100%;
     background-color: #f4f4f4;
-    color: #333333;
+    color: #565656;
     border: 0;
     padding: 14px 16px;
     margin-bottom: 14px;
     border-radius: 10000px;
     ::placeholder {
-      color: #333333;
+      color: #808080;
       opacity: 1;
     }
   }

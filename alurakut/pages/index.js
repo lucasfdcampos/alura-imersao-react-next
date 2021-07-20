@@ -25,24 +25,79 @@ function ProfileSidebar(props) {
   );
 }
 
+function ProfileRelationsBox(props) {
+  return (
+    <ProfileRelationsBoxWrapper>
+      <h2 className="smallTitle">
+        {props.title} ({props.items.length})
+      </h2>
+
+      <ul>
+        {/* {communities.slice(0, 6).map((itemAtual) => {
+          return (
+            <li key={itemAtual.id}>
+              <a href={`/users/${itemAtual.title}`}>
+                <img src={itemAtual.image} alt={itemAtual.title} />
+                <span>{itemAtual.title}</span>
+              </a>
+            </li>
+          );
+        })} */}
+      </ul>
+    </ProfileRelationsBoxWrapper>
+  );
+}
+
 export default function Home() {
   const githubUser = 'lucasfdcampos';
-  const [communities, setComunnities] = React.useState([
-    {
-      id: '1',
-      title: 'Eu odeio acordar cedo',
-      image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg',
-    },
-  ]);
+  const [communities, setComunnities] = React.useState([]);
   // const comunidades = ['Alurakut'];
   const pessoasFavoritas = [
     'peas',
     'diego3g',
+    'EliasGcf',
     'omariosouto',
     'rafaballerini',
     'filipedeschamps',
     'juunegreiros',
+    'edgardmessias',
   ];
+
+  const [followers, setFollowers] = React.useState([]);
+
+  React.useEffect(function () {
+    fetch('https://api.github.com/users/lucasfdcampos/followers')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (response2) {
+        setFollowers(response2);
+      });
+
+    // API GraphQL
+    fetch('https://graphql.datocms.com/', {
+      method: 'POST',
+      headers: {
+        'Authorization': '919205afc9936192ecb05fb3e9b7de',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query: `query {
+        allCommunities {
+          id,
+          title,
+          imageUrl,
+          creatorSlug
+        }
+      }`,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response2) => {
+        setComunnities(response2.data.allCommunities);
+      });
+  }, []);
 
   return (
     <>
@@ -98,15 +153,17 @@ export default function Home() {
           className="profileRelationsArea"
           style={{ gridArea: 'profileRelationsArea' }}
         >
+          <ProfileRelationsBox title="Seguidores" items={followers} />
+
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">Comunidades ({communities.length})</h2>
 
             <ul>
-              {communities.map((itemAtual) => {
+              {communities.slice(0, 6).map((itemAtual) => {
                 return (
                   <li key={itemAtual.id}>
-                    <a href={`/users/${itemAtual.title}`}>
-                      <img src={itemAtual.image} alt={itemAtual.title} />
+                    <a href={`/communities/${itemAtual.id}`}>
+                      <img src={itemAtual.imageUrl} alt={itemAtual.title} />
                       <span>{itemAtual.title}</span>
                     </a>
                   </li>
@@ -121,7 +178,7 @@ export default function Home() {
             </h2>
 
             <ul>
-              {pessoasFavoritas.map((itemAtual) => {
+              {pessoasFavoritas.slice(0, 6).map((itemAtual) => {
                 return (
                   <li key={itemAtual}>
                     <a href={`/users/${itemAtual}`} key={itemAtual}>

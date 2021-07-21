@@ -121,11 +121,23 @@ export default function Home() {
                 const dadosDoForm = new FormData(e.target);
 
                 const community = {
-                  id: new Date().toISOString(),
                   title: dadosDoForm.get('title'),
-                  image: dadosDoForm.get('image'),
+                  imageUrl: dadosDoForm.get('image'),
+                  creatorSlug: githubUser,
                 };
-                setComunnities([...communities, community]);
+
+                fetch('/api/communities', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(community),
+                }).then(async (response) => {
+                  const dados = await response.json();
+                  console.log(dados.registro);
+                  const community = dados.registro;
+                  setComunnities([...communities, community]);
+                });
               }}
             >
               <div>
